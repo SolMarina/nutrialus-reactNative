@@ -27,6 +27,8 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "description": "Mi primer paso en react native",
+    "githubUrl": "https://github.com/SolMarina/nutrialus-reactNative"
   }
 }

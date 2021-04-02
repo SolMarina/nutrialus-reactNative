@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View, Image, Button } from 'react-native';
+import { StyleSheet, Text, View, Image} from 'react-native';
 import { Header } from 'react-native-elements';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import nutri from './assets/nutrialuslogo.png';
@@ -11,14 +11,10 @@ import person from './assets/person-circle.svg'
 import telephone from './assets/telephone-fill.svg'
 
 export default function App() {
-
-  const { data } = useFetch(`https://0q27loouph.execute-api.us-east-1.amazonaws.com/`);
+  
+  const {data} = useFetch(`https://0q27loouph.execute-api.us-east-1.amazonaws.com/`);
   const { name, phone, email, image } = !!data && data;
-  const next = () => {
-    window.location.replace('');
-
-  }
-
+  
   return (
     <View style={styles.container}>
       <SafeAreaProvider>
@@ -31,11 +27,11 @@ export default function App() {
       </SafeAreaProvider>
       <View style={styles.centeredView} >
 
-        <Text style={{ color: '#F87113' }}><h3 >Información Personal</h3></Text>
+        <Text style={{ color: '#F87113' }}>Información Personal</Text>
 
         <DataTable style={styles.tableView}>
           <DataTable.Row>
-            <DataTable.Cell ><Text style={{ color: '#264653'}}><Image source={person} style={{ width: 16, height: 16 }} /> Nombre:</Text></DataTable.Cell>
+            <DataTable.Cell ><Text style={{ color: '#264653' }}><Image source={person} style={{ width: 16, height: 16 }} /> Nombre:</Text></DataTable.Cell>
             <DataTable.Cell><Text style={{ color: '#264653', fontSize: 13 }}>{name}</Text></DataTable.Cell>
           </DataTable.Row>
           <DataTable.Row >
@@ -43,21 +39,17 @@ export default function App() {
             <DataTable.Cell ><Text style={{ color: '#264653', fontSize: 13 }}>{phone}</Text></DataTable.Cell>
           </DataTable.Row>
           <DataTable.Row>
-            <DataTable.Cell><Text style={{ color: '#264653' }}><Image source={envelope} style={{ width: 16, height: 16}} /> Email:</Text></DataTable.Cell>
+            <DataTable.Cell><Text style={{ color: '#264653' }}><Image source={envelope} style={{ width: 16, height: 16 }} /> Email:</Text></DataTable.Cell>
             <DataTable.Cell ><Text style={{ color: '#264653', fontSize: 12 }} >{email}</Text></DataTable.Cell>
           </DataTable.Row>
         </DataTable>
 
         <Image
           style={{ width: 150, height: 150, marginTop: 10, borderRadius: 5, marginBottom: 10 }}
-          source={image}
+          source={{ uri: image }}
+
         />
 
-        <Button
-          title="Siguiente"
-          color="#F87113"
-          onPress={next}
-        />
       </View>
       <StatusBar style="auto" />
     </View>
@@ -75,7 +67,7 @@ const styles = StyleSheet.create({
   },
   centeredView: {
     display: 'flex',
-    flexFlow: 'column',
+    flexDirection: 'column',
     width: 350,
     padding: 10,
     backgroundColor: 'whitesmoke',
@@ -92,5 +84,7 @@ const styles = StyleSheet.create({
     width: 360,
 
   },
+
+
 
 });
