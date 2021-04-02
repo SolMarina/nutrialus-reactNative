@@ -1,11 +1,14 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View, Image, Button} from 'react-native';
+import { StyleSheet, Text, View, Image, Button } from 'react-native';
 import { Header } from 'react-native-elements';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import nutri from './assets/nutrialuslogo.png';
-import { DataTable} from 'react-native-paper';
+import { DataTable } from 'react-native-paper';
 import useFetch from './Hooks/UseFetch';
+import envelope from './assets/envelope-fill.svg'
+import person from './assets/person-circle.svg'
+import telephone from './assets/telephone-fill.svg'
 
 export default function App() {
 
@@ -28,20 +31,20 @@ export default function App() {
       </SafeAreaProvider>
       <View style={styles.centeredView} >
 
-        <Text style={{ color: '#F87113' }}><h3 >Informacion Personal</h3></Text>
+        <Text style={{ color: '#F87113' }}><h3 >Información Personal</h3></Text>
 
         <DataTable style={styles.tableView}>
           <DataTable.Row>
-            <DataTable.Cell><Text Icon="camera" style={{ color: '#264653'}}>Nombre:</Text></DataTable.Cell>
-            <DataTable.Cell><Text style={{ color: '#264653',fontSize: 13  }}>{name}</Text></DataTable.Cell>
+            <DataTable.Cell ><Text style={{ color: '#264653'}}><Image source={person} style={{ width: 16, height: 16 }} /> Nombre:</Text></DataTable.Cell>
+            <DataTable.Cell><Text style={{ color: '#264653', fontSize: 13 }}>{name}</Text></DataTable.Cell>
           </DataTable.Row>
           <DataTable.Row >
-            <DataTable.Cell><Text style={{ color: '#264653'}}>Teléfono:</Text></DataTable.Cell>
-            <DataTable.Cell ><Text style={{ color: '#264653',fontSize: 13  }}>{phone}</Text></DataTable.Cell>
+            <DataTable.Cell><Text style={{ color: '#264653' }}><Image source={telephone} style={{ width: 16, height: 16 }} />  Teléfono:</Text></DataTable.Cell>
+            <DataTable.Cell ><Text style={{ color: '#264653', fontSize: 13 }}>{phone}</Text></DataTable.Cell>
           </DataTable.Row>
           <DataTable.Row>
-            <DataTable.Cell><Text style={{ color: '#264653'}}>Email:</Text></DataTable.Cell>
-            <DataTable.Cell ><Text style={{ color: '#264653',fontSize: 12  }} >{email}</Text></DataTable.Cell>
+            <DataTable.Cell><Text style={{ color: '#264653' }}><Image source={envelope} style={{ width: 16, height: 16}} /> Email:</Text></DataTable.Cell>
+            <DataTable.Cell ><Text style={{ color: '#264653', fontSize: 12 }} >{email}</Text></DataTable.Cell>
           </DataTable.Row>
         </DataTable>
 
@@ -86,7 +89,7 @@ const styles = StyleSheet.create({
   },
 
   tableView: {
-    width: 350,
+    width: 360,
 
   },
 
