@@ -1,20 +1,30 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View, Image} from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { StyleSheet, Text, View, Image, Button } from 'react-native';
 import { Header } from 'react-native-elements';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import nutri from './assets/nutrialuslogo.png';
 import { DataTable } from 'react-native-paper';
-import useFetch from './Hooks/UseFetch';
 import envelope from './assets/envelope-fill.svg'
 import person from './assets/person-circle.svg'
 import telephone from './assets/telephone-fill.svg'
 
+
 export default function App() {
-  
-  const {data} = useFetch(`https://0q27loouph.execute-api.us-east-1.amazonaws.com/`);
-  const { name, phone, email, image } = !!data && data;
-  
+  const [data, setData] = useState({});
+  const { name, phone, email, image } = data;
+
+  useEffect(() => {
+    patients();
+  }, [])
+
+  const patients = async () => {
+    const url = 'https://0q27loouph.execute-api.us-east-1.amazonaws.com/'
+    const resp = await fetch(url);
+    const json = await resp.json();
+    setData(json);
+  }
+
   return (
     <View style={styles.container}>
       <SafeAreaProvider>
@@ -43,13 +53,17 @@ export default function App() {
             <DataTable.Cell ><Text style={{ color: '#264653', fontSize: 12 }} >{email}</Text></DataTable.Cell>
           </DataTable.Row>
         </DataTable>
-
-        <Image
-          style={{ width: 150, height: 150, marginTop: 10, borderRadius: 5, marginBottom: 10 }}
-          source={{ uri: image }}
-
+        <View>
+          <Image
+            style={{ width: 150, height: 150, marginTop: 10, borderRadius: 5, marginBottom: 10 }}
+            source={{ uri: image }}
+          />
+        </View>
+        <Button
+          onPress={patients}
+          title="Siguiente"
+          color="#F87113"
         />
-
       </View>
       <StatusBar style="auto" />
     </View>
@@ -73,7 +87,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'whitesmoke',
     alignItems: 'center',
     borderRadius: 10,
-    marginBottom: 150,
+    marginBottom: 180,
     shadowColor: 'grey',
     shadowRadius: 15
 
