@@ -3,12 +3,11 @@ import React, { useEffect, useState } from 'react';
 import { StyleSheet, Text, View, Image, Button } from 'react-native';
 import { Header } from 'react-native-elements';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-import nutri from './assets/nutrialuslogo.png';
 import { DataTable } from 'react-native-paper';
-import envelope from './assets/envelope-fill.svg'
-import person from './assets/person-circle.svg'
-import telephone from './assets/telephone-fill.svg'
-
+import nutri from './assets/nutrialuslogo.png';
+import envelope from './assets/envelope-fill.svg';
+import person from './assets/person-circle.svg';
+import telephone from './assets/telephone-fill.svg';
 
 export default function App() {
   const [data, setData] = useState({});
@@ -32,7 +31,7 @@ export default function App() {
           leftComponent={{ icon: 'menu', color: '#F87113' }}
           centerComponent={<Image style={{ width: 160, height: 25, marginBottom: 15, borderRadius: 5 }} source={nutri} />}
           rightComponent={{ icon: 'home', color: '#F87113' }}
-          containerStyle={{ width: 380, backgroundColor: 'white' }}
+          containerStyle={{ width: 390, backgroundColor: 'white' }}
         />
       </SafeAreaProvider>
       <View style={styles.centeredView} >
@@ -90,15 +89,12 @@ const styles = StyleSheet.create({
     marginBottom: 180,
     shadowColor: 'grey',
     shadowRadius: 15
-
-
   },
 
   tableView: {
     width: 360,
 
   },
-
 
 
 });
